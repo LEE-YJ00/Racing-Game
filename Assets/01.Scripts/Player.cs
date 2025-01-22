@@ -1,15 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
 public class Player : MonoBehaviour
 {
     public float Energy = 100; 
     [SerializeField] private float decreaseEnergy;
     [SerializeField] private TextMeshProUGUI playerEnergyText;
+    [SerializeField] private GameObject panel;
 
+    void Start()
+    {
+        Energy = 100;
+    }
     void Update()
     {
         Move();
@@ -36,13 +37,14 @@ public class Player : MonoBehaviour
         Energy -= decreaseEnergy * Time.deltaTime;
         GameOver();
     }
-
+    
     private void GameOver()
     {
         if (Energy < 0)
         {
             Energy = 0;
             Destroy(gameObject);
+            panel.SetActive(true);
         }
     }
 
