@@ -10,11 +10,16 @@ public class Road : MonoBehaviour
     
     void Update()
     {
-        transform.position -= new Vector3(0, 0, moveRoadSpeed) * Time.deltaTime;
+        RoadMove();
+    }
 
-        if (transform.position.z < -20)
-        {
-            transform.position = initPos.position;
-        }
+    void RoadMove()
+    {
+        transform.position -= new Vector3(0, 0, moveRoadSpeed) * Time.deltaTime;
+                                                                        
+        if (transform.position.z < -20)                                         
+        {                                                                       
+            transform.position = initPos.position;                              
+        }                                                                       
     }
 }
